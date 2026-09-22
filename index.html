@@ -14,7 +14,7 @@
       content="Bukiškių Kristaus Gimimo parapijos virtuvės atnaujinimo projektas. Bendra projekto vertė – 6 200 €, jau surinkta 1 500 €, liko surinkti 4 700 €."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/images/og-kitchen.svg" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/Maksimas-win/bukiskis-virtuve/main/assets/images/og-kitchen.png" />
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/app.js" defer></script>
@@ -52,15 +52,15 @@
           </div>
           <div class="hero-stats" aria-label="Project figures">
             <article class="stat-card">
-              <span class="stat-value">6 200 €</span>
+              <span class="stat-value" data-figure="total">6 200 €</span>
               <span class="stat-label" data-i18n="budgetTotal">Bendra projekto vertė</span>
             </article>
             <article class="stat-card stat-card-highlight">
-              <span class="stat-value">1 500 €</span>
+              <span class="stat-value" data-figure="raised">1 500 €</span>
               <span class="stat-label" data-i18n="budgetRaised">Jau surinkta</span>
             </article>
             <article class="stat-card">
-              <span class="stat-value">4 700 €</span>
+              <span class="stat-value" data-figure="remaining">4 700 €</span>
               <span class="stat-label" data-i18n="budgetRemaining">Liko surinkti</span>
             </article>
           </div>
@@ -231,27 +231,27 @@
         </div>
         <div class="budget-cards">
           <article class="budget-card reveal">
-            <span class="budget-amount">6 200 €</span>
+            <span class="budget-amount" data-figure="total">6 200 €</span>
             <span class="budget-label" data-i18n="budgetTotal">Bendra projekto vertė</span>
           </article>
           <article class="budget-card budget-card-accent reveal">
-            <span class="budget-amount">1 500 €</span>
+            <span class="budget-amount" data-figure="raised">1 500 €</span>
             <span class="budget-label" data-i18n="budgetRaised">Jau surinkta</span>
           </article>
           <article class="budget-card reveal">
-            <span class="budget-amount">4 700 €</span>
+            <span class="budget-amount" data-figure="remaining">4 700 €</span>
             <span class="budget-label" data-i18n="budgetRemaining">Liko surinkti</span>
           </article>
         </div>
         <div class="progress-panel reveal" aria-label="Funding progress">
           <div class="progress-header">
-            <strong data-i18n="progressText">Surinkta 24,2 %</strong>
-            <span data-i18n="progressValue">24,2 %</span>
+            <strong><span data-i18n="progressLabel">Surinkta</span> <span data-figure="progress">24,2 %</span></strong>
+            <span data-figure="progress">24,2 %</span>
           </div>
           <div class="progress-track" aria-hidden="true">
             <span class="progress-fill" style="width: 24.2%"></span>
           </div>
-          <p class="progress-caption" data-i18n="progressCaption">1 500 € iš 6 200 €</p>
+          <p class="progress-caption"><span data-figure="raised">1 500 €</span> <span data-i18n="progressDivider">iš</span> <span data-figure="total">6 200 €</span></p>
         </div>
       </section>
 

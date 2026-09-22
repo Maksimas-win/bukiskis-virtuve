@@ -614,7 +614,12 @@ h3 {
   }
 
   .nav-links {
-    display: none;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
   }
 
   .brand {

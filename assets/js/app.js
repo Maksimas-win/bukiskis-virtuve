@@ -66,9 +66,8 @@ const translations = {
       'Vizualizacija parodo planuojamą erdvės kryptį. Galutinis baldų išdėstymas ir detalės gali būti koreguojami pagal patalpos matavimus ir techninius sprendimus.',
     budgetKicker: 'Biudžetas',
     budgetTitle: 'Visa projekto suma ir dabartinė pažanga',
-    progressText: 'Surinkta 24,2 %',
-    progressValue: '24,2 %',
-    progressCaption: '1 500 € iš 6 200 €',
+    progressLabel: 'Surinkta',
+    progressDivider: 'iš',
     supportKicker: 'Prisidėkime kartu',
     supportTitle: 'Kiekviena parama tampa konkrečiu žingsniu pirmyn',
     supportBody:
@@ -148,9 +147,8 @@ const translations = {
       'Визуализация показывает предполагаемое направление обновления. Окончательная планировка мебели и отдельные детали могут корректироваться после точных замеров помещения и технического проектирования.',
     budgetKicker: 'Бюджет',
     budgetTitle: 'Полная стоимость проекта и текущий прогресс',
-    progressText: 'Собрано 24,2 %',
-    progressValue: '24,2 %',
-    progressCaption: '1 500 € из 6 200 €',
+    progressLabel: 'Собрано',
+    progressDivider: 'из',
     supportKicker: 'Сделаем это вместе',
     supportTitle: 'Каждая помощь становится конкретным шагом вперёд',
     supportBody:
@@ -169,7 +167,15 @@ const yearNode = document.querySelector('#year');
 const langButtons = document.querySelectorAll('.lang-btn');
 const translatableNodes = document.querySelectorAll('[data-i18n]');
 const translatableAltNodes = document.querySelectorAll('[data-i18n-alt]');
+const figureNodes = document.querySelectorAll('[data-figure]');
+const progressFill = document.querySelector('.progress-fill');
 const STORAGE_KEY = 'bukiskis-virtuve-language';
+const projectFigures = {
+  total: 6200,
+  raised: 1500
+};
+projectFigures.remaining = projectFigures.total - projectFigures.raised;
+projectFigures.progress = (projectFigures.raised / projectFigures.total) * 100;
 const storage = {
   get() {
     try {
@@ -191,6 +197,16 @@ if (yearNode) {
   yearNode.textContent = new Date().getFullYear().toString();
 }
 
+const getLocale = (lang) => (lang === 'ru' ? 'ru-RU' : 'lt-LT');
+
+const formatCurrency = (value, lang) => `${new Intl.NumberFormat(getLocale(lang)).format(value)} €`;
+
+const formatPercent = (value, lang) =>
+  `${new Intl.NumberFormat(getLocale(lang), {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1
+  }).format(value)} %`;
+
 const setLanguage = (lang) => {
   const selected = translations[lang] ? lang : 'lt';
 
@@ -199,7 +215,7 @@ const setLanguage = (lang) => {
 
   translatableNodes.forEach((node) => {
     const key = node.dataset.i18n;
-    if (translations[selected][key]) {
+    if (translations[selected][key] && node.childElementCount === 0) {
       node.textContent = translations[selected][key];
     }
   });
@@ -210,6 +226,22 @@ const setLanguage = (lang) => {
       node.setAttribute('alt', translations[selected][key]);
     }
   });
+
+  figureNodes.forEach((node) => {
+    const key = node.dataset.figure;
+    if (key === 'progress') {
+      node.textContent = formatPercent(projectFigures.progress, selected);
+      return;
+    }
+
+    if (typeof projectFigures[key] === 'number') {
+      node.textContent = formatCurrency(projectFigures[key], selected);
+    }
+  });
+
+  if (progressFill) {
+    progressFill.style.width = `${projectFigures.progress}%`;
+  }
 
   langButtons.forEach((button) => {
     const isActive = button.dataset.lang === selected;
