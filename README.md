@@ -42,10 +42,12 @@ Vizualizacijos rodo planuojamą kryptį, o ne galutinai patvirtintą baldų proj
 - LT / RU kalbų perjungimas be puslapio perkrovimo
 - Pasirinkta kalba išsaugoma `localStorage`
 - Responsive dizainas telefonams, planšetėms ir kompiuteriams
-- GitHub Pages deployment per `.github/workflows/pages.yml`
+- GitHub Pages publikavimas įjungtas repozitorijos Pages nustatymuose
 
 ## GitHub Pages
 
-Po sujungimo į `main` repozitorijos savininkas turi patikrinti:
+Vieša projekto svetainė:
 
-**Settings → Pages → Build and deployment → Source: GitHub Actions**
+https://maksimas-win.github.io/bukiskis-virtuve/
+
+Pagrindinė projekto versija saugoma `main` šakoje. GitHub Pages publikavimo šaka sinchronizuojama su `main`.
