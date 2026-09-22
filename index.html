@@ -13,8 +13,8 @@
   <meta property="og:image:width" content="1600" />
   <meta property="og:image:height" content="900" />
   <link rel="canonical" href="https://maksimas-win.github.io/bukiskis-virtuve/" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="assets/js/app.js" defer></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=20260922-3" />
+  <script src="assets/js/app.js?v=20260922-3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skipLink">Pereiti prie turinio</a>
@@ -228,30 +228,57 @@
       <div class="section support-inner reveal">
         <div class="support-copy">
           <p class="section-kicker" data-i18n="supportKicker">Prisidėti prie projekto</p>
-          <h2 data-i18n="supportTitle">Padėkite surinkti likusius 4 700 €.</h2>
-          <p data-i18n="supportBody">Jau surinkta 1 500 €. Galima paaukoti bet kokią sumą — kiekvienas įnašas priartina projektą prie įgyvendinimo.</p>
+          <h2 class="support-title">
+            <span data-i18n="supportTitleLead">Padėkite surinkti likusius</span>
+            <span class="support-amount" data-i18n="supportTitleAmount">4 700 €.</span>
+          </h2>
+          <p class="support-lead" data-i18n="supportBody">Jau surinkta 1 500 €. Galima paaukoti bet kokią sumą — kiekvienas įnašas priartina projektą prie įgyvendinimo.</p>
+
+          <div class="support-progress" aria-label="Paramos rinkimo pažanga" data-i18n-aria="progressAria">
+            <div class="support-progress-head">
+              <strong><span data-i18n="progressLabel">Surinkta</span> <span data-figure="progress">24,2 %</span></strong>
+              <span><span data-figure="raised">1 500 €</span> / <span data-figure="total">6 200 €</span></span>
+            </div>
+            <div class="support-progress-track" aria-hidden="true"><span class="support-progress-fill"></span></div>
+          </div>
+
           <p class="support-note" data-i18n="supportNote">Po darbų parapija galės pateikti galutines nuotraukas ir faktines išlaidas.</p>
         </div>
 
         <div class="bank-card" aria-label="Banko rekvizitai" data-i18n-aria="bankAria">
-          <strong class="bank-recipient">Bukiškio stačiatikių Kristaus Gimimo parapija</strong>
-          <div class="iban">LT40 7044 0600 0624 4432</div>
+          <div class="bank-card-head">
+            <div>
+              <span class="bank-overline" data-i18n="bankOverline">Paramos rekvizitai</span>
+              <strong class="bank-recipient">Bukiškio stačiatikių Kristaus Gimimo parapija</strong>
+            </div>
+            <span class="bank-badge">SEB</span>
+          </div>
 
-          <div class="bankline">
-            <span data-i18n="bankNameLabel">Bankas</span>
-            <span>AB SEB bankas</span>
+          <div class="iban-block">
+            <span class="iban-label">IBAN</span>
+            <div class="iban-row">
+              <div class="iban">LT40 7044 0600 0624 4432</div>
+              <button type="button" class="copy-iban" data-copy-iban="LT407044060006244432" data-i18n="copyIban">Kopijuoti</button>
+            </div>
           </div>
-          <div class="bankline">
-            <span>BIC / SWIFT</span>
-            <span>CBVILT2X</span>
-          </div>
-          <div class="bankline">
-            <span data-i18n="companyCodeLabel">Įmonės kodas</span>
-            <span>301004570</span>
-          </div>
-          <div class="bankline">
-            <span data-i18n="purposeLabel">Paskirtis</span>
-            <span data-i18n="purposeValue">Auka parapijos virtuvės atnaujinimui</span>
+
+          <div class="bank-details">
+            <div class="bankline">
+              <span data-i18n="bankNameLabel">Bankas</span>
+              <span>AB SEB bankas</span>
+            </div>
+            <div class="bankline">
+              <span>BIC / SWIFT</span>
+              <span>CBVILT2X</span>
+            </div>
+            <div class="bankline">
+              <span data-i18n="companyCodeLabel">Įmonės kodas</span>
+              <span>301004570</span>
+            </div>
+            <div class="bankline bankline-purpose">
+              <span data-i18n="purposeLabel">Paskirtis</span>
+              <span data-i18n="purposeValue">Auka parapijos virtuvės atnaujinimui</span>
+            </div>
           </div>
 
           <p class="bank-note" data-i18n="bankNote">Prieš patvirtindami pavedimą patikrinkite gavėją ir IBAN.</p>
