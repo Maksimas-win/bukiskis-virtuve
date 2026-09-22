@@ -24,5 +24,6 @@
   <rect x="556" y="464" width="8" height="70" rx="4" fill="#D5C2A1"/>
   <rect x="714" y="464" width="8" height="70" rx="4" fill="#D5C2A1"/>
   <rect x="78" y="584" width="804" height="56" rx="28" fill="#E1D0BA"/>
-  <text x="110" y="620" fill="#6D3944" font-family="Georgia, serif" font-size="28" font-weight="700">Koncepcinė vizualizacija</text>
+  <rect x="110" y="606" width="196" height="12" rx="6" fill="#6D3944" fill-opacity="0.88"/>
+  <rect x="324" y="606" width="104" height="12" rx="6" fill="#C7A05C" fill-opacity="0.9"/>
 </svg>
