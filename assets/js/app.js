@@ -1,5 +1,6 @@
 const translations = {
   lt: {
+    brand: 'Bukiškių Kristaus Gimimo parapija',
     navProject: 'Projektas',
     navWorks: 'Darbai',
     navSupport: 'Parama',
@@ -66,6 +67,8 @@ const translations = {
     budgetKicker: 'Biudžetas',
     budgetTitle: 'Visa projekto suma ir dabartinė pažanga',
     progressText: 'Surinkta 24,2 %',
+    progressValue: '24,2 %',
+    progressCaption: '1 500 € iš 6 200 €',
     supportKicker: 'Prisidėkime kartu',
     supportTitle: 'Kiekviena parama tampa konkrečiu žingsniu pirmyn',
     supportBody:
@@ -75,9 +78,11 @@ const translations = {
     bankPlaceholderTitle: 'Vieta būsimiems rekvizitams',
     bankPlaceholderBody:
       'Jei vėliau bus parengti oficialūs rekvizitai ar papildoma paramos informacija, juos bus galima lengvai įrašyti šiame bloke.',
+    footerParish: 'Bukiškių Kristaus Gimimo parapija',
     footerNote: 'Svetainė parengta kaip atskiras GitHub Pages projektas parapijos virtuvės atnaujinimui.'
   },
   ru: {
+    brand: 'Букишкский приход Рождества Христова',
     navProject: 'Проект',
     navWorks: 'Этапы',
     navSupport: 'Поддержка',
@@ -144,6 +149,8 @@ const translations = {
     budgetKicker: 'Бюджет',
     budgetTitle: 'Полная стоимость проекта и текущий прогресс',
     progressText: 'Собрано 24,2 %',
+    progressValue: '24,2 %',
+    progressCaption: '1 500 € из 6 200 €',
     supportKicker: 'Сделаем это вместе',
     supportTitle: 'Каждая помощь становится конкретным шагом вперёд',
     supportBody:
@@ -153,6 +160,7 @@ const translations = {
     bankPlaceholderTitle: 'Место для будущих реквизитов',
     bankPlaceholderBody:
       'Если позже появятся официальные банковские реквизиты или дополнительная информация о поддержке проекта, их можно будет легко добавить в этот блок.',
+    footerParish: 'Букишкский приход Рождества Христова',
     footerNote: 'Сайт подготовлен как отдельный GitHub Pages проект для обновления приходской кухни.'
   }
 };

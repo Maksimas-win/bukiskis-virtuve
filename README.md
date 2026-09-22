@@ -25,4 +25,4 @@ Atnaujinti esamą parapijos virtuvę ir sukurti šviesią, praktišką, tvarking
 
 ## GitHub Pages
 
-Publikavimas paruoštas per `.github/workflows/pages.yml` workflow, kuris diegia projekto šaknį į GitHub Pages po pakeitimų `main` šakoje arba paleidus `workflow_dispatch`.
+Publikavimas paruoštas per `.github/workflows/pages.yml` workflow, kuris diegia projekto šaknį į GitHub Pages po `push` į workflow faile nurodytą publikavimo šaką ir taip pat gali būti paleistas rankiniu būdu per `workflow_dispatch`.
