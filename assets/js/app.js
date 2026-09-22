@@ -215,7 +215,7 @@ const setLanguage = (lang) => {
 
   translatableNodes.forEach((node) => {
     const key = node.dataset.i18n;
-    if (translations[selected][key] && node.childElementCount === 0) {
+    if (translations[selected][key]) {
       node.textContent = translations[selected][key];
     }
   });
