@@ -14,6 +14,7 @@ const translations = {
     budgetRaised: 'Jau surinkta',
     budgetRemaining: 'Liko surinkti',
     conceptCaption: 'Koncepcinė vizualizacija',
+    heroConceptAlt: 'Šviesios parapijos virtuvės koncepcinė vizualizacija',
     importanceKicker: 'Ne tik virtuvė',
     importanceTitle: 'Kasdienė parapijos gyvenimo vieta',
     importanceBody:
@@ -30,6 +31,10 @@ const translations = {
     stateCaptionShelves: 'Atviros lentynos ir atsitiktinis laikymas',
     stateCaptionCoffee: 'Neorganizuota kavos ir arbatos zona',
     stateCaptionStorage: 'Per mažai uždaro laikymo',
+    stateWallsAlt: 'Esamos virtuvės būklės iliustracija: nusidėvėjusios sienos ir apkrauta erdvė',
+    stateShelvesAlt: 'Esamos virtuvės būklės iliustracija: atviros lentynos ir vizualinis triukšmas',
+    stateCoffeeAlt: 'Esamos virtuvės būklės iliustracija: nepatogi kavos ir arbatos zona',
+    stateStorageAlt: 'Esamos virtuvės būklės iliustracija: trūksta uždaro laikymo',
     stagesKicker: 'Darbai etapais',
     stagesTitle: 'Aiški ir atsakinga darbų eiga',
     stageOneBadge: '1 etapas',
@@ -54,6 +59,8 @@ const translations = {
     comparisonTitle: 'Aiškiai matoma atsinaujinimo kryptis',
     comparisonNow: 'Dabar',
     comparisonGoal: 'Tikslas',
+    comparisonNowAlt: 'Esamos būklės iliustracija: tamsesnė ir apkrauta parapijos virtuvė',
+    comparisonGoalAlt: 'Planuojamos šviesios parapijos virtuvės koncepcinė vizualizacija',
     comparisonNote:
       'Vizualizacija parodo planuojamą erdvės kryptį. Galutinis baldų išdėstymas ir detalės gali būti koreguojami pagal patalpos matavimus ir techninius sprendimus.',
     budgetKicker: 'Biudžetas',
@@ -64,7 +71,7 @@ const translations = {
     supportBody:
       'Kiekviena parama padeda žingsnis po žingsnio atnaujinti šią parapijos erdvę. Esame dėkingi kiekvienam, kuris prisideda prie bendro darbo.',
     supportPrimary: 'Prisidėti prie projekto',
-    supportSecondary: 'Susisiekti',
+    supportSecondary: 'Parapijos svetainė',
     bankPlaceholderTitle: 'Vieta būsimiems rekvizitams',
     bankPlaceholderBody:
       'Jei vėliau bus parengti oficialūs rekvizitai ar papildoma paramos informacija, juos bus galima lengvai įrašyti šiame bloke.',
@@ -85,6 +92,7 @@ const translations = {
     budgetRaised: 'Уже собрано',
     budgetRemaining: 'Осталось собрать',
     conceptCaption: 'Концептуальная визуализация',
+    heroConceptAlt: 'Концептуальная визуализация светлой приходской кухни',
     importanceKicker: 'Не просто кухня',
     importanceTitle: 'Важная часть повседневной жизни прихода',
     importanceBody:
@@ -101,6 +109,10 @@ const translations = {
     stateCaptionShelves: 'Открытые стеллажи и визуальный беспорядок',
     stateCaptionCoffee: 'Неорганизованная кофейно-чайная зона',
     stateCaptionStorage: 'Недостаток закрытого хранения',
+    stateWallsAlt: 'Иллюстрация текущего состояния кухни: изношенные стены и перегруженное пространство',
+    stateShelvesAlt: 'Иллюстрация текущего состояния кухни: открытые стеллажи и визуальный беспорядок',
+    stateCoffeeAlt: 'Иллюстрация текущего состояния кухни: неудобная кофейно-чайная зона',
+    stateStorageAlt: 'Иллюстрация текущего состояния кухни: недостаток закрытого хранения',
     stagesKicker: 'Этапы работ',
     stagesTitle: 'Понятная и ответственная последовательность работ',
     stageOneBadge: 'Этап 1',
@@ -125,6 +137,8 @@ const translations = {
     comparisonTitle: 'Понятное направление будущего обновления',
     comparisonNow: 'Сейчас',
     comparisonGoal: 'Цель',
+    comparisonNowAlt: 'Иллюстрация текущего состояния: более тёмная и перегруженная приходская кухня',
+    comparisonGoalAlt: 'Концептуальная визуализация будущей светлой приходской кухни',
     comparisonNote:
       'Визуализация показывает предполагаемое направление обновления. Окончательная планировка мебели и отдельные детали могут корректироваться после точных замеров помещения и технического проектирования.',
     budgetKicker: 'Бюджет',
@@ -135,7 +149,7 @@ const translations = {
     supportBody:
       'Каждая помощь позволяет шаг за шагом обновлять это приходское пространство. Мы благодарны каждому, кто принимает участие в общем деле.',
     supportPrimary: 'Поддержать проект',
-    supportSecondary: 'Связаться',
+    supportSecondary: 'Сайт прихода',
     bankPlaceholderTitle: 'Место для будущих реквизитов',
     bankPlaceholderBody:
       'Если позже появятся официальные банковские реквизиты или дополнительная информация о поддержке проекта, их можно будет легко добавить в этот блок.',
@@ -146,6 +160,7 @@ const translations = {
 const yearNode = document.querySelector('#year');
 const langButtons = document.querySelectorAll('.lang-btn');
 const translatableNodes = document.querySelectorAll('[data-i18n]');
+const translatableAltNodes = document.querySelectorAll('[data-i18n-alt]');
 const STORAGE_KEY = 'bukiskis-virtuve-language';
 const storage = {
   get() {
@@ -181,6 +196,13 @@ const setLanguage = (lang) => {
     }
   });
 
+  translatableAltNodes.forEach((node) => {
+    const key = node.dataset.i18nAlt;
+    if (translations[selected][key]) {
+      node.setAttribute('alt', translations[selected][key]);
+    }
+  });
+
   langButtons.forEach((button) => {
     const isActive = button.dataset.lang === selected;
     button.classList.toggle('is-active', isActive);
@@ -194,7 +216,10 @@ langButtons.forEach((button) => {
 
 setLanguage(storage.get() || 'lt');
 
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+const revealNodes = document.querySelectorAll('.reveal');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -207,7 +232,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     { threshold: 0.16 }
   );
 
-  document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
+  revealNodes.forEach((node) => observer.observe(node));
 } else {
-  document.querySelectorAll('.reveal').forEach((node) => node.classList.add('is-visible'));
+  revealNodes.forEach((node) => node.classList.add('is-visible'));
 }
