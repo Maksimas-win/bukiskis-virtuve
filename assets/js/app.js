@@ -75,15 +75,19 @@ const translations = {
     progressLabel: 'Surinkta',
     budgetNote: 'Bendra suma yra orientacinė ir gali būti tikslinama pagal galutinius matavimus, pasirinktus baldus bei techninius sprendimus.',
     supportKicker: 'Prisidėti prie projekto',
-    supportTitle: 'Padėkite surinkti likusius 4 700 €.',
+    supportTitleLead: 'Padėkite surinkti likusius',
+    supportTitleAmount: '4 700 €.',
     supportBody: 'Jau surinkta 1 500 €. Galima paaukoti bet kokią sumą — kiekvienas įnašas priartina projektą prie įgyvendinimo.',
     supportNote: 'Po darbų parapija galės pateikti galutines nuotraukas ir faktines išlaidas.',
     bankAria: 'Banko rekvizitai',
+    bankOverline: 'Paramos rekvizitai',
     bankNameLabel: 'Bankas',
     companyCodeLabel: 'Įmonės kodas',
     purposeLabel: 'Paskirtis',
     purposeValue: 'Auka parapijos virtuvės atnaujinimui',
     bankNote: 'Prieš patvirtindami pavedimą patikrinkite gavėją ir IBAN.',
+    copyIban: 'Kopijuoti',
+    copiedIban: 'Nukopijuota',
     footerParish: 'Bukiškio stačiatikių Kristaus Gimimo parapija',
     pageTitle: 'Bukiškių parapijos virtuvės atnaujinimas · 6 200 €',
     pageDescription: 'Bukiškių Kristaus Gimimo parapijos virtuvės atnaujinimo projektas. Bendra projekto vertė – 6 200 €, jau surinkta 1 500 €, liko surinkti 4 700 €.'
@@ -164,15 +168,19 @@ const translations = {
     progressLabel: 'Собрано',
     budgetNote: 'Общая сумма является ориентировочной и может уточняться после окончательных замеров, выбора мебели и технических решений.',
     supportKicker: 'Поддержать проект',
-    supportTitle: 'Помогите собрать оставшиеся 4 700 €.',
+    supportTitleLead: 'Помогите собрать оставшиеся',
+    supportTitleAmount: '4 700 €.',
     supportBody: 'Уже собрано 1 500 €. Можно пожертвовать любую сумму — каждый вклад приближает проект к реализации.',
     supportNote: 'После завершения работ приход сможет представить итоговые фотографии и фактические расходы.',
     bankAria: 'Банковские реквизиты',
+    bankOverline: 'Реквизиты для пожертвования',
     bankNameLabel: 'Банк',
     companyCodeLabel: 'Код юридического лица',
     purposeLabel: 'Назначение',
     purposeValue: 'Пожертвование на обновление приходской кухни',
     bankNote: 'Перед подтверждением перевода проверьте получателя и IBAN.',
+    copyIban: 'Скопировать',
+    copiedIban: 'Скопировано',
     footerParish: 'Bukiškio stačiatikių Kristaus Gimimo parapija',
     pageTitle: 'Обновление приходской кухни · 6 200 €',
     pageDescription: 'Проект обновления кухни Букишкского прихода Рождества Христова. Общая стоимость – 6 200 €, уже собрано 1 500 €, осталось собрать 4 700 €.'
@@ -191,7 +199,7 @@ const translatableAltNodes = document.querySelectorAll('[data-i18n-alt]');
 const translatableAriaNodes = document.querySelectorAll('[data-i18n-aria]');
 const figureNodes = document.querySelectorAll('[data-figure]');
 const progressFill = document.querySelector('.progress-fill');
-const contactLink = document.querySelector('[data-contact-link]');
+const supportProgressFill = document.querySelector('.support-progress-fill');
 
 const storage = {
   get() { try { return localStorage.getItem(STORAGE_KEY); } catch { return null; } },
@@ -235,7 +243,7 @@ function setLanguage(lang) {
   });
 
   if (progressFill) progressFill.style.width = projectFigures.progress + '%';
-  if (contactLink) contactLink.href = selected === 'ru' ? 'https://bukiski-hram.net/ru/contacts.html' : 'https://bukiski-hram.net/lt/contacts.html';
+  if (supportProgressFill) supportProgressFill.style.width = projectFigures.progress + '%';
 
   langButtons.forEach(button => {
     const active = button.dataset.lang === selected;
@@ -264,4 +272,25 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
   revealNodes.forEach(node => observer.observe(node));
 } else {
   revealNodes.forEach(node => node.classList.add('is-visible'));
+}
+
+
+const copyIbanButton = document.querySelector('[data-copy-iban]');
+if (copyIbanButton) {
+  copyIbanButton.addEventListener('click', async () => {
+    const value = copyIbanButton.dataset.copyIban;
+    const lang = document.documentElement.lang === 'ru' ? 'ru' : 'lt';
+    const original = translations[lang].copyIban;
+    try {
+      await navigator.clipboard.writeText(value);
+      copyIbanButton.textContent = translations[lang].copiedIban;
+      copyIbanButton.classList.add('is-copied');
+      window.setTimeout(() => {
+        copyIbanButton.textContent = original;
+        copyIbanButton.classList.remove('is-copied');
+      }, 1800);
+    } catch {
+      copyIbanButton.textContent = value;
+    }
+  });
 }
