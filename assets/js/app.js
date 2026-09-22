@@ -257,3 +257,21 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
 } else {
   revealNodes.forEach(node => node.classList.add('is-visible'));
 }
+
+const imageFallbacks = {
+  'assets/images/current-storage.webp': 'assets/images/current-storage.svg',
+  'assets/images/current-coffee.webp': 'assets/images/current-coffee.svg',
+  'assets/images/current-freezer.webp': 'assets/images/current-shelves.svg',
+  'assets/images/current-window.webp': 'assets/images/current-walls.svg',
+  'assets/images/concept-worktop.webp': 'assets/images/concept-kitchen.svg',
+  'assets/images/concept-storage.webp': 'assets/images/concept-kitchen.svg'
+};
+
+document.querySelectorAll('img').forEach((img) => {
+  img.addEventListener('error', () => {
+    const fallback = imageFallbacks[img.getAttribute('src')];
+    if (fallback && img.getAttribute('src') !== fallback) {
+      img.setAttribute('src', fallback);
+    }
+  }, { once: true });
+});
